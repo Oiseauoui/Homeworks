@@ -1,0 +1,154 @@
+* {
+    font-family: Tahoma;
+	
+    }
+body {
+    background: url(images/blue.jpg); /* Фоновая картинка */
+    background-size: cover; /* Растягиваем фон */
+    }
+.container {
+	
+}
+header {
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Поля вокруг текста */
+	width:100%;
+    }
+p {
+
+}
+
+.head {
+	text-transform: uppercase;
+}
+
+.menu {
+	padding:20px;
+	text-align:center;
+}
+    }
+nav>ul {
+	}
+nav>ul li {
+	display: inline;
+	padding:10px;
+	font-size:15px;
+	text-transform: uppercase;
+	font-weight: bold;
+      }
+nav>ul li a {
+    color: #00BFFF;
+    text-decoration: none;
+    border-bottom: #00BFFF;
+    border-bottom: 1px solid rgba(10, 153, 153, .6);
+	transition: 1s linear; /* Время изменения */
+      }
+nav>ul li a:hover {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #87CEEB;
+	color:#87CEEB;
+	text-decoration:none;
+      }
+	  
+.content {
+	/*height:500px;*/
+	margin-top:30px;
+	margin-bottom:150px;	
+     }
+.profile {
+	width: 200px;
+	height: 150px;
+	border: 0px;
+	margin: 15px 0px;
+      }
+.avatar {
+	float:left;
+	width: 30%;
+	
+	}
+.goal {
+	float:right;
+	width: 70%;
+	font-size:23px;
+    }
+.text {
+	background: rgba(0,200,349,0.3); /* Полупрозрачный фон */
+	font-size:50px;
+	text-align: justify;
+	color:#2E8B57	;
+    }
+.letter {
+	color:#006400;
+	text-decoration: underline;
+	
+}
+	
+.data {
+	float:left;
+	margin:15px 0px;
+	font-size:20px;
+	font-family: Arial;
+	font-style: italic;
+	background-color:#00FF7F;
+	background: rgba(0,600,0,0.3); /* Полупрозрачный фон */
+		}
+.scills {
+	color: black;
+	font-weight: 600;
+}
+.adress {
+	float:left;
+	font-size: 15px;
+	background-color:#5F9EA0;
+	background: rgba(0,0,0,0.2); /* Полупрозрачный фон */
+	}
+
+.clearfix {
+    clear: both;
+   }
+ .anchor {
+	 text-align:right;
+	 width:75%;
+	 float:left;
+	 height:80px;
+	 padding-top:50px;	
+	 
+ }
+	  
+footer {
+    background: rgba(0,0,0,0.6); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Поля вокруг текста */
+	clear:both;
+	height:75px; 
+	margin-top:30px;
+	}
+	
+.designe {
+	text-align: left;
+	float:left;
+	
+}
+.link {
+	text-align: right;
+	float:left;
+}
+ .designe, .link {
+	 width:50%;
+ }
+ .formular {
+	 border:5px;
+	 margin:5px auto;
+	 padding:5px;
+	 width:40%;
+	 font-size:19px;
+ }
+ .public {
+	 width: 100%;
+	 font-size: 15px;
+ }
+ 
+.top {
+	font-weight: 600;
+	}
