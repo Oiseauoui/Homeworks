@@ -1,21 +1,29 @@
 <?php
 
+
 $a = 5;
-$b = 10;
-$oper = '-' ;
+$b = 0;
+$operator = 'dil' ;
  
 // Функция вывода результата.
-function show_result($a, $b , $oper) {
+if ($operator === "plus" )
+{
+    $r = $a+$b;
+};
+if ($operator === "minus" )
+{
+    $r = $a-$b;
  
- $result = null;
- if ($oper == "+")       {  $result = $a + $b;  }
- else if ($oper == "-")  {  $result = $a - $b;  }
- else if ($oper == "*")  {  $result = $a * $b;  }
- else if ($oper == "/")  {  $result = $b != 0 ? $a / $b : "на ноль делить нельзя!"; }
-
- }
-       $c =show_result($a, $b, $oper);
-	   
-echo $c;
-
+};
+if ($operator === "dil")
+{
+    $r = $b != 0 ? $a / $b : "на ноль делить нельзя!";
+ 
+};
+if ($operator === "mnoz" )
+{
+    $r = $a*$b;
+ 
+}
+echo $r;
 ?>
