@@ -7,18 +7,28 @@
 
 
 $number = "1666678888999000";
-
+echo "<b>Искомое число</b> - $number <br>";
+echo "<br>";
 foreach (count_chars($number, 1) as $i => $val) {
 	
    echo "\"" , chr($i) , "\" встречается  $val раз(а) <br> \n";
 }
-echo $number;
 
+echo "<br>";
+echo "<br>";
 
 
 //http://php.net/manual/ru/function.count-chars.php
 
+echo "Второй вариант: <br>";
 
-
+    $s = 1;
+	$result = 0;
+	$arr = str_split($number);
+	foreach ($arr as $item) {
+		if ($item == $s) {
+			$result = ++$result;
+		}
+	}
+	echo "Количество вхождений цифры <i>{$s}</i> - {$result} раз(а);<br>";
 	
-

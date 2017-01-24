@@ -1,9 +1,10 @@
 <?php
 
-$a = array(26, 17, 136, 12, 79, 15);
+$a = array(2, 3, 4, 2);
 
 $result=0;
  foreach($a as $b) {
-	 $result += ($b^2);
+	 $result += pow($b, 2);
  }
 echo "$result - this is my sum sq";
+

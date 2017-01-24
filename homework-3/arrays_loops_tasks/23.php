@@ -5,6 +5,8 @@
 2, 3, т. е. 6.</p>
 По желанию можете сделать проверку на корректность введения данных пользователем.*/
 
+
+echo "Первый вариант<br>";
 // число
 $number = 17766;
 // сумма
@@ -15,4 +17,20 @@ for ($i=0;$i<count($number);$i++){
     $result+=$number[$i];
     //echo $result."\n";
 }
-echo 'Сума  = '.$result;
+echo 'Сума  = '.$result . "<br>";
+
+
+echo "Второй вариант <br>";
+$number = "87881110";
+	$result = 0;
+	if (is_numeric($number)) {
+		echo "Строка является числом! <br>";
+		$arr = str_split($number);
+		foreach ($arr as $item) {
+			$result +=  $item;
+		}
+		echo "Сумма всех цифр строки - " . $result . "<br>";
+	}
+	else {
+		echo "Строка НЕ является числом! <br>";
+	}
