@@ -1,0 +1,46 @@
+
+body {
+    background: rgba(0,100,0,0.3); /* Полупрозрачный фон */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Поля вокруг текста */
+	
+    }
+
+form {
+	text-transform: uppercase;
+	color: #8B795E;
+	font-weight: bold;
+}
+
+.container {
+	padding:20px;
+	text-align:center;
+	width: 960px;
+	margin:auto;
+}
+
+.header {
+	color: #191970;
+	text-transform: uppercase;
+	
+	}
+	
+.button {
+	margin: 20px;
+	background-color: #8B8970;
+	font-weight:bold;
+	height:60px;
+}
+.text {
+   font-size: 25px;
+   font-family: Arial;
+   
+   
+}
+
+.field {
+	font-size: 25px;
+	height: 100px;
+	width:500px;
+}
+
