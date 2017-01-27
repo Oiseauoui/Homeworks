@@ -8,8 +8,12 @@ function test($number)
 {
 	
 }
-$number = array(4);
+$number = array("orange", "banana");
 
-array_push ($number, 8);
+array_push ($number, "apple");
+array_push($number, count($number));
 
-print_r(array_count_values($number));
+echo "<pre>";
+print_r($number);
+echo "</pre>";
+
