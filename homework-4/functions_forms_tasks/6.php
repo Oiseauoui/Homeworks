@@ -38,7 +38,7 @@ if (!empty($images)) {
         if ($img === '.' || $img === '..') {
             continue;
         }
-        $table .= "<tr><td><img class='img-rounded' src='gallery/$img' ></td></tr>";
+        $table .= "<tr><td><img  src='gallery/$img' ></td></tr>";
     }
 }
 ?>
