@@ -1,70 +1,6 @@
-<?php
-/*Создать гостевую книгу, где любой человек может оставить комментарий в текстовом поле и добавить его.
- Все добавленные комментарии выводятся над текстовым полем. 
-Реализовать проверку на наличие в тексте запрещенных слов, матов. 
-При наличии таких слов - выводить сообщение "Некорректный комментарий". 
-Реализовать удаление из комментария всех тегов, кроме тега &lt;b&gt;.</p>
-*/
-
-
-
-if (!empty($_POST)) {
-    $data = userForm($_POST);
-    $result = save ($data);
-    //var_dump($_POST);
-}
-
-
-function userForm($request) {
-    $data = [
-
-        'name' => !empty($request ['name']) ? $request ['name'] : '',
-        'comment' => !empty($request ['text']) ? $request ['text'] : '',
-
-    ];
-
-//var_dump($data);
-    return $data;
-}
-function save($data) {
-    $items = getAll();
-    $items[] = $data;
-    return saveAll($items);
-}
-function getAll()
-{
-    $data = file_get_contents('comments.txt');
-    $data = unserialize($data) ?: [];
-    return $data;
-}
-
-
-function saveAll (array $items) {
-    $items = serialize($items);
-    // $items = var_export($items, false);
-    file_put_contents('comments.txt', $items);
-
-    return true;
-}
-function save_comments($comment){
-    return file_put_contents('comments.txt',serialize($comment));
-}
-function get_comments(){
-    return unserialize(file_get_contents('comments.txt'));
-}
-
-if (file_exists('comments.txt')){
-    $comments=get_comments();
-}
-function filtr($comment){
-    $file=file('words.txt');
-    $cnt=count($file);
-    for($i=0;$i<$cnt;$i++)
-        $comment=str_replace(trim($file[$i]), '\'У нас не матерятся!\'', $comment);
-    return $comment;
-}
-
-   ?>
+<!--<p>7. Создать гостевую книгу, где любой человек может оставить комментарий
+            в текстовом поле и добавить его. Все добавленные
+            комментарии выводятся над текстовым полем.</p>*/-->
 
 <html>
 <head>
@@ -76,31 +12,50 @@ function filtr($comment){
 <body>
 <div class="container">
     <div class="header">
+        <div>
+            <h2>Гостевая книга</h2>
+        </div>
+        <div class="comment">
 
-        <h2>Гостевая книга</h2>
 
-        <?php if (file_exists('comments.txt')): ?>
+            <?php
 
-            <div>
-                 <?php for ($i=0;$i<count($comments);$i++):?>
-                    <div class="comment">
-                    <div>
-                        <div><?=$comments[$i]['name']   ?></div>
-                        <div class="col"><?=$comments[$i]['comment']  ?></div>
-                    </div>
+           $arrComment = array();
+            if(isset($_POST['submit'])) {
+                if (is_readable("comments.txt")) {
+                    $f = file_get_contents("comments.txt");
+                    $comments = unserialize($f);
+                }
+                if (!empty($_POST)) {
+                    $newPost['name'] = htmlspecialchars($_POST['name']);
+                    $newPost['comment'] = htmlspecialchars($_POST['comment']);
+                    $comments[] = $newPost;
+                    $commentsList = serialize($comments);
+                    file_put_contents("comments.txt", $commentsList);
+                }
 
-                    <div>
-                        <div>Date comments:
-                            <?php
-                            echo date('l jS \of F Y h:i:s A');
-                            ?>
-                        </div>
-                    </div>
+                if (isset($comments)) {
+                    $comments = array_reverse($comments);
+                    $cens = ["fuck", "no good", "дурак", "дура"];
+                    foreach ($comments as $badWords) {
+                        foreach ($cens as $word) {
+                            $badWords['name'] = str_replace($word, "У НАС НЕТ ТАКИХ ИМЕН", $badWords['name']);
+                            $badWords['comment'] = str_replace($word, "Не используйте запретных слов", $badWords['comment']);
+                        }
+						
+                        echo "<div class='item_comment'>";
+                        echo "<p>Имя пользователя: <b> {$badWords['name']} </b></p>";
+                        echo "<p>Комментарий:   <i>{$badWords['comment']} </i> </p>";
+                        echo "</div>";
+						// print date ("F d, h:i a"); 
+                    }
+                }
+            }
+			
+?>
 
-                    </div>
-                <?php endfor; ?>
-
-        <?php endif; ?>
+            
+        </div>
 
         <form action="" method="post">
             <div>
@@ -113,18 +68,19 @@ function filtr($comment){
             <div>
                 <div>
                     <fieldset>
-                        <textarea class="field" name="text" rows="5" placeholder="Введите комментарий..."></textarea>
+                        <input class="field" type="text" name="comment" value="" placeholder="Введите комментарий...">
                     </fieldset>
                 </div>
             </div>
             <div>
                 <div class>
-                    <button class="button" type="submit">Отправить</button>
+                    <input class="button"  name="submit" type="submit" value="ОТПРАВИТЬ">
                 </div>
             </div>
         </form>
     </div>
 </body>
 </html>
+
 
 
