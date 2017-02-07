@@ -1,0 +1,1 @@
+a:3:{i:0;a:2:{s:4:"name";s:4:"juli";s:7:"comment";s:6:"hhg ff";}i:1;a:2:{s:4:"name";s:10:"дурак";s:7:"comment";s:0:"";}i:2;a:2:{s:4:"name";s:0:"";s:7:"comment";s:0:"";}}
