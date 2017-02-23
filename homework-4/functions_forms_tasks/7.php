@@ -35,6 +35,10 @@ $commentsList = serialize($comments);
 file_put_contents("comments.txt", $commentsList);
 }
 
+    if (strlen($_POST['comment'])==0) die('Вы забыли указать текст сообщения');
+    if (strlen($_POST['comment'])>1024) die('Сообщение слишком большое!');
+
+
  if (isset($comments)) {
                $comments = array_reverse($comments);
                $cens = ["fuck", "no good", "дурак", "дура"];
@@ -42,7 +46,11 @@ file_put_contents("comments.txt", $commentsList);
                    foreach ($cens as $word) {
                        $badWords['name'] = str_replace($word, "У НАС НЕТ ТАКИХ ИМЕН", $badWords['name']);
                        $badWords['comment'] = str_replace($word, "Не используйте запретных слов", $badWords['comment']);
+
+                       if (strlen($badWords['name'])==0) $badWords['name'] = "Гость";
+
                    }
+
                    echo "<div class='item_comment'>";
                    echo "<p>Пользователь: <b> {$badWords['name']} </b></p>";
                    echo "<p>Оставил комментарий:   <i>{$badWords['comment']} </i> </p>";
