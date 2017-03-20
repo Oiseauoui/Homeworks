@@ -14,6 +14,12 @@ class BaseUser
     private $firstName;
     private $lastName;
 
+    public function  __construct()
+    {
+        $this->setLastName('Popov');
+        print "Constructor" . __CLASS__;
+    }
+
     public function getFirstName()
     {
         return $this->firstName;
