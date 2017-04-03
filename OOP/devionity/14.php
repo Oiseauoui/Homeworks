@@ -15,9 +15,9 @@
 <p>
     <?php
     class User {
-        protected $login;
-        protected $password;
-        protected $email;
+        protected $login = "Good";
+        protected $password = "123";
+        protected $email = "daf@com.ua";
         protected $rating = 0;
         protected $isLogged;
 
@@ -34,88 +34,25 @@
 
     class Manager extends User
     {
+      public $login = "Nice";
+       public $name;
+        public $password = "3333";
+        public $email = "gaff_gaff@com.ua";
 
     }
     class Admin extends User
     {
+        public $name;
 
     }
 
-    class Car {
-
-        private $price;
-        public $brand;
-        public $model;
-        public $year;
-        public $driver ;
-
-        public function setPrice($price)
-        {
-          $this->price=round($price,2);
-        }
-        public function getPrice($format=false)
-        {
-          return $format ? number_format($this->price, 2, '') : $this->price;
-        }
-
-        public function showBrand()
-        {
-        echo $this->brand;
-        }
-
-        public function showModel()
-        {
-        echo $this->model;
-
-        }
-    }
-class WaterCar extends Car
-{
-    public $waterSpeed;
-}
-
-       $manager = new Manager;
-       $admin = new Admin;
-
-        $toyota = new Car;//("toyota", "Corolla", 2000);
-        $mazda = new Car; //("Mazda", "6", 2015);
-        $ford = new Car; // ("ford", "Taurus", 1995);
-
-    $personOne = new User;
-    $personTwo= new User;
-    $personThree= new User;
-
-    $personOne->driver = "Alex";
-    $personTwo->driver = "Niko";
-    $personThree->driver = "Amile";
-
-    $toyota->brand ="toyota";
-    $toyota->model = "Corolla";
-    $toyota->year = 2000;
-    $toyota->driver = $personOne;
-
-
-    $mazda->brand ="Mazda";
-    $mazda->model = "6";
-    $mazda->year = 2015;
-    $mazda->driver = $personTwo;
-
-    $ford->brand = "ford";
-    $ford->model = "Taurus";
-    $ford->year = 1995;
-    $ford->driver = $personThree;
-
-    echo "<pre>";
-   // var_dump($toyota, mazda, $ford);
-   // print_r($toyota);
-   //print_r($mazda);
-   //print_r($ford);
-   //$personOne->login();// Войти
-  // $personOne->logout();// Выйти
-    $toyota->showBrand();
-    echo "<br>";
-  $toyota->showModel();
-
+$manager = new Manager();
+$admin = new Admin();
+$manager->name = 'Adam';
+$admin->name = 'Kris';
+echo "<pre>";
+print_r($admin);
+print_r($manager);
    echo "</pre>";
 
     ?>

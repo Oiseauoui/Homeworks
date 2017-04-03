@@ -54,55 +54,30 @@
           return $format ? number_format($this->price, 2, '') : $this->price;
         }
 
-        public function showBrand()
-        {
-        echo $this->brand;
-        }
-
-        public function showModel()
-        {
-        echo $this->model;
-
-        }
     }
-        $toyota = new Car;//("toyota", "Corolla", 2000);
-        $mazda = new Car; //("Mazda", "6", 2015);
-        $ford = new Car; // ("ford", "Taurus", 1995);
+   echo "<pre>";
 
-    $personOne = new User;
-    $personTwo= new User;
-    $personThree= new User;
+    $car = new Car();
 
-    $personOne->driver = "Alex";
-    $personTwo->driver = "Niko";
-    $personThree->driver = "Amile";
+      $car->setPrice(1230.7655);
+      var_dump($car->getPrice());
+       print_r($car);
 
-    $toyota->brand ="toyota";
-    $toyota->model = "Corolla";
-    $toyota->year = 2000;
-    $toyota->driver = $personOne;
+   $car->setPrice(3399.875);
+     var_dump($car->getPrice());
+    print_r($car);
 
+   $car->setPrice(3336.5);
+      var_dump($car->getPrice());
+       print_r($car);
 
-    $mazda->brand ="Mazda";
-    $mazda->model = "6";
-    $mazda->year = 2015;
-    $mazda->driver = $personTwo;
+   $car->setPrice(0);
+      var_dump($car->getPrice());
+       print_r($car);
 
-    $ford->brand = "ford";
-    $ford->model = "Taurus";
-    $ford->year = 1995;
-    $ford->driver = $personThree;
-
-    echo "<pre>";
-   // var_dump($toyota, mazda, $ford);
-   // print_r($toyota);
-   //print_r($mazda);
-   //print_r($ford);
-   //$personOne->login();// Войти
-  // $personOne->logout();// Выйти
-    $toyota->showBrand();
-    echo "<br>";
-  $toyota->showModel();
+   $car->setPrice(123.777);
+   var_dump($car->getPrice());
+    print_r($car);
 
    echo "</pre>";
 
