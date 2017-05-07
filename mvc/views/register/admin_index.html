@@ -1,0 +1,23 @@
+<h3>Register</h3><br/>
+<table class="table table-striped" style="width: 100%;">
+    <tr>
+        <td style="width: 5%;">#</td>
+        <td style="width: 10%;">Login</td>
+        <td style="width: 25%;">Email</td>
+        <td style="width: 25%;">Role</td>
+        <td style="width: 25%;">Password</td>
+        <td style="width: 50%;">is_active</td>
+    </tr>
+
+    <?php foreach($data as $item) { ?>
+     <tr>
+        <td><?=$item['id']?></td>
+        <td><?=$item['login']?></td>
+        <td><?=$item['email']?></td>
+        <td><?=$item['role']?></td>
+        <td><?=$item['password']?></td>
+        <td><?=$item['is_active']?></td>
+    </tr>
+    <?php } ?>
+</table>
+

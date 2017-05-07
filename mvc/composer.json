@@ -1,0 +1,7 @@
+{
+  "require": {
+    "raveren/kint": "^1.0",
+    "phpmailer/phpmailer": "^5.2",
+    "symfony/http-foundation": "^3.2"
+  }
+}
