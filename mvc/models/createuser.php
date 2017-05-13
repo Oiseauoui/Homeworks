@@ -4,7 +4,7 @@ class CreateUser extends Model {
 
     public function create($data, $id = null)
     {
-        if (!isset($data['login']) || !isset($data['email']) || !isset($data['password'])) {
+        if (!isset($data['login']) || !isset($data['email']) || !isset($data['password']) || !isset($data['is_active'])) {
             return false;
         }
 
@@ -12,7 +12,6 @@ class CreateUser extends Model {
         $login = $this->db->escape($data['login']);
         $email = $this->db->escape($data['email']);
         $password = $this->db->escape($data['password']);
-        $role = $this->db->escape($data['role']);
         $is_active= isset($data['is_active']) ? 1 : 0;
 
         if (!$id) { // Add new record
@@ -21,7 +20,6 @@ class CreateUser extends Model {
                    set login = '{$login}',
                        email = '{$email}',
                        password = '{$password}'
-                        role = '{$role}'
                        is_active= '{$is_active}'
 
             ";
@@ -31,7 +29,6 @@ class CreateUser extends Model {
                    set login = '{$login}',
                        email = '{$email}',
                        password = '{$password}'
-                       role = '{$role}'
                        is_active= '{$is_active}'
                    where id = {$id}
             ";

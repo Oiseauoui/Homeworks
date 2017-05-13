@@ -1,7 +1,7 @@
 <?php
 
 
-class RegisterController extends Controller
+class RegistersController extends Controller
 {
     public function __construct($data = array()){
         parent::__construct($data);

@@ -31,6 +31,10 @@ class View{
     public function render(){
         $data = $this->data;
 
+        if (!empty($_POST)) {
+            $data = array_merge($_POST, $data);
+        }
+
         ob_start();
         include($this->path);
         $content = ob_get_clean();

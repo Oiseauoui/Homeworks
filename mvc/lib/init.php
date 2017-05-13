@@ -23,3 +23,5 @@ function __($key, $default_value = ''){
 }
 
 require_once(ROOT.DS.'config'.DS.'config.php');
+
+//session_start();
