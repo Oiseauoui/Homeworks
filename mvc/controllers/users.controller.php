@@ -39,8 +39,7 @@ class UsersController extends Controller
             endforeach;
         endif;
 
-
-// Переменные для формы
+        // Переменные для формы
         $login = false;
         $email = false;
         $password = false;
@@ -53,6 +52,7 @@ class UsersController extends Controller
             $login = $_POST['login'];
             $email = $_POST['email'];
             $password = $_POST['password'];
+
             // Флаг ошибок
             $errors = false;
 
@@ -66,32 +66,37 @@ class UsersController extends Controller
             if (!User::checkPassword($password)) {
                 $errors[] = 'Пароль не должен быть короче 6-ти символов';
             }
-            /*if (User::checkEmailExists($email)) {
+            //if ($this->model->checkEmailExists($email)) {
+            //  $errors[] = 'Такой email уже используется';
+            //var_dump();
+            // }
+            if ($this->model->checkUserData($email)) {
                 $errors[] = 'Такой email уже используется';
-            }*/
+            }
 
             if ($errors == false) {
                 // Если ошибок нет
                 // Регистрируем пользователя
-                $result = $this->model->register($login, $email, $password);
+                $this->model->register($login, $email, $password, $role = null);
+                echo "Вы успешно зарегестрировались!"."<br>";
+                ?>
+                <a href="/admin/users/login">Login</a>
+<?php
             }
+
             if (isset($errors) && is_array($errors)) {
 
                 foreach ($errors as $error) {
                     echo $error . "<br>";
                 }
             }
-            // Session::setFlash('Thank you! Your message was sent successfully!');
         }
+    }
+
 
             //  Router::redirect('/admin/users/login');
-    }
-    // Подключаем вид
-    //require_once(ROOT . '/views/users/index.html');
 
-
-
-    /**
+      /*
      * Удаляем данные о пользователе из сессии
      */
       public function admin_logout()
