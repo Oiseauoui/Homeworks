@@ -19,6 +19,7 @@ class User extends Model
         return false;
     }
 
+
     /**
      * Регистрация пользователя
      * @param string $login <p>Имя</p>
@@ -29,10 +30,12 @@ class User extends Model
     public function register($login, $email, $password, $role = null)
     {
         // Соединение с БД
+        //hash the password
         $login = $this->db->escape($login);
         $email = $this->db->escape($email);
         $password = $this->db->escape($password);
         $role = (string)$role;
+
 
         // Текст запроса к БД
         $sql = "INSERT INTO users
@@ -43,6 +46,7 @@ class User extends Model
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $this->db->query($sql);
+
         if (isset($result[0])) {
             return $result[0];
         }
@@ -97,26 +101,28 @@ class User extends Model
         if (isset($result[0])) {
             return $result[0];
         }
-      // var_dump($sql);
+        // var_dump($sql);
         return false;
 
-       // Обращаемся к записи
+        // Обращаемся к записи
         $user = $result->fetch();
         if ($user) {
             // Если запись существует, возвращаем id пользователя
             return $user['id'];
         }
-       return false;
-       }
-       /**
+        return false;
+    }
+
+    /**
      * Запоминаем пользователя
      * @param integer $userId <p>id пользователя</p>
      */
-   public static function auth($userId)
+    public static function auth($userId)
     {
         // Записываем идентификатор пользователя в сессию
         $_SESSION['user'] = $userId;
     }
+
     /**
      * Возвращает идентификатор пользователя, если он авторизирован.<br/>
      * Иначе перенаправляет на страницу входа
@@ -129,8 +135,9 @@ class User extends Model
             return $_SESSION['user'];
         }
         return false;
-       // header("Location: /user/login");
+        // header("Location: /user/login");
     }
+
     /**
      * Проверяет является ли пользователь гостем
      * @return boolean <p>Результат выполнения метода</p>
@@ -142,31 +149,44 @@ class User extends Model
         }
         return true;
     }
+
     /**
      * Проверяет имя: не меньше, чем 2 символа
      * @param string $login <p>Имя</p>
      * @return boolean <p>Результат выполнения метода</p>
      */
 
-   public static function checklogin($login)
+    public static function checklogin($login)
     {
         if (strlen($login) >= 2) {
             return true;
         }
         return false;
     }
+
     /**
      * Проверяет имя: не меньше, чем 6 символов
      * @param string $password <p>Пароль</p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-   public static function checkPassword($password)
+    public static function checkPassword($password)
     {
         if (strlen($password) >= 6) {
             return true;
         }
+    }
+    public function getPassword($password)
+    {
+        $password = $this->db->escape($password);
+        $sql = "select * from users where password = '{$password}' limit 1";
+        $result = $this->db->query($sql);
+        if (isset($result[0])) {
+            return $result[0];
+        }
         return false;
     }
+
+
     /**
      * Проверяет email
      * @param string $email <p>E-mail</p>
@@ -179,7 +199,7 @@ class User extends Model
         }
         return false;
     }
-    /**
+           /**
      * Проверяет не занят ли email другим пользователем
      * @param type $email <p>E-mail</p>
      * @return boolean <p>Результат выполнения метода</p>
@@ -203,5 +223,4 @@ class User extends Model
             return true;
         return false;
     }*/
-
 }

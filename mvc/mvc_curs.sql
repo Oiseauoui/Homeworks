@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 14 2017 г., 12:33
+-- Время создания: Май 20 2017 г., 11:21
 -- Версия сервера: 5.7.16
 -- Версия PHP: 7.0.14
 
@@ -102,7 +102,7 @@ CREATE TABLE `users` (
   `login` varchar(45) NOT NULL,
   `email` varchar(100) NOT NULL,
   `role` varchar(45) NOT NULL DEFAULT 'admin',
-  `password` char(32) NOT NULL,
+  `password` char(100) NOT NULL,
   `is_active` tinyint(1) UNSIGNED DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -114,7 +114,8 @@ INSERT INTO `users` (`id`, `login`, `email`, `role`, `password`, `is_active`) VA
 (1, 'admin', 'admin@your-site.com', 'admin', '44ca5fa5c67e434b9e779c5febc46f06', 1),
 (2, 'Ali', 'oiseua@gmail.com', 'admin', '1234567', 1),
 (3, 'Alex', 'cat@gmail.com', 'admin', '4554567', 1),
-(4, 'Kate', 'goodday@yes.com', 'admin', '6543321', 1);
+(32, 'Dan', 'smallworld@ukr.net', 'admin', '$2y$10$OKQ.u6uoBKpNyStNJbnlsevCCzRdESmsNCq59CALHUbQkf13qHvCy', 1),
+(33, 'Nata', 'bird@gmail.com', 'admin', '$2y$10$B44KbsxOkwEJROHaYAxE/.uE5a5U31e6liUTNT6ogshKBMht4vHdq', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -167,7 +168,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

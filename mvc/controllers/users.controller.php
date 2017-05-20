@@ -52,6 +52,7 @@ class UsersController extends Controller
             $login = $_POST['login'];
             $email = $_POST['email'];
             $password = $_POST['password'];
+            //$hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
             // Флаг ошибок
             $errors = false;
@@ -62,14 +63,20 @@ class UsersController extends Controller
             }
             if (!User::checkEmail($email)) {
                 $errors[] = 'Неправильный email';
-            }
-            if (!User::checkPassword($password)) {
+             }
+           if (!User::checkPassword($password)) {
                 $errors[] = 'Пароль не должен быть короче 6-ти символов';
+
+            }
+            if (User::checkPassword($password)) {
+                $this->model->getPassword($password);
+                $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
             }
             //if ($this->model->checkEmailExists($email)) {
             //  $errors[] = 'Такой email уже используется';
             //var_dump();
-            // }
+
             if ($this->model->checkUserData($email)) {
                 $errors[] = 'Такой email уже используется';
             }
@@ -78,31 +85,33 @@ class UsersController extends Controller
                 // Если ошибок нет
                 // Регистрируем пользователя
                 $this->model->register($login, $email, $password, $role = null);
-                echo "Вы успешно зарегестрировались!"."<br>";
+                echo "Вы успешно зарегестрировались!" . "<br>";
+
                 ?>
                 <a href="/admin/users/login">Login</a>
-<?php
+                <?php
             }
-
             if (isset($errors) && is_array($errors)) {
 
                 foreach ($errors as $error) {
                     echo $error . "<br>";
                 }
             }
+
+        }
+
+    }
+
+        //  Router::redirect('/admin/users/login');
+
+        /*
+       * Удаляем данные о пользователе из сессии
+       */
+        public
+        function admin_logout()
+        {
+            Session::destroy();
+            Router::redirect('/admin/');
+
         }
     }
-
-
-            //  Router::redirect('/admin/users/login');
-
-      /*
-     * Удаляем данные о пользователе из сессии
-     */
-      public function admin_logout()
-    {
-        Session::destroy();
-        Router::redirect('/admin/');
-
-    }
-}
